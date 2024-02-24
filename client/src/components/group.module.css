@@ -1,0 +1,76 @@
+.schoolStudentsDigitalArtStIcon {
+    position: absolute;
+    top: 142px;
+    left: 639px;
+    width: 1148px;
+    height: 936.4px;
+    object-fit: cover;
+  }
+  .yourCampusYour {
+    margin: 0;
+  }
+  .yourWay {
+    margin: 0;
+    color: var(--color-mediumslateblue);
+  }
+  .swapShopAndContainer,
+  .yourCampusYourContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    letter-spacing: 0.02em;
+  }
+  .swapShopAndContainer {
+    top: 216px;
+    left: 5px;
+    font-size: 19px;
+    color: #7a7a7a;
+  }
+  .groupChild {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+    background-color: var(--color-mediumslateblue);
+    width: 201.7px;
+    height: 54px;
+  }
+  .letsGetStartded,
+  .rectangleParent {
+    position: absolute;
+    top: 17px;
+    left: 25px;
+  }
+  .rectangleParent {
+    top: 385px;
+    left: 5px;
+    width: 201.7px;
+    height: 54px;
+    font-size: 16px;
+    color: var(--color-white);
+  }
+  .macbookPro141,
+  .text {
+    position: absolute;
+    top: 275px;
+    left: 84px;
+    width: 875px;
+    height: 439px;
+  }
+  .macbookPro141 {
+    top: 0;
+    left: 0;
+    background-color: var(--color-white);
+    width: 1512px;
+    height: 982px;
+    overflow: hidden;
+  }
+  .macbookPro141Parent {
+    width: 100%;
+    position: relative;
+    height: 982px;
+    text-align: left;
+    font-size: 70px;
+    color: #000;
+    font-family: var(--font-barlow);
+  }

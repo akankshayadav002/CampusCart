@@ -48,24 +48,48 @@ export default function Home() {
   return (
     <div>
       {/* top */}
-      <div className='flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto'>
-        <h1 className='text-slate-700 font-bold text-3xl lg:text-6xl'>
-        Your Campus, Your Market, <br /><span className='text-slate-500'>Your Way. </span>
+      <div className='flex flex-row gap-6 p-28 px-3 max-w-6xl mx-auto'>
+
+        <div className='flex flex-row'>
           
-        
-        </h1>
-        <div className='text-gray-400 text-xs sm:text-sm'>
-        Swap, shop, and connect with fellow scholars in this virtual marketplace, <br /> designed exclusively for the academic community.
-          <br />
-          Navigate Campus Life with Confidence, Buy and Sell with Ease.
+          <div className="left-panel-box">
+            <h1 className='text-slate-800 font-bold text-2xl lg:text-4xl'>
+              Your Campus, Your Market, <br />
+              <span className='text-slate-450'>Your Way.</span>
+            </h1>
+            <div className='top: 216px;
+  left: 5px;
+  font-size: 19px;
+  color: #7a7a7a;
+
+'>
+              Swap, shop, and connect with fellow scholars in this virtual marketplace, <br /> designed exclusively for the academic community.
+              <br />
+              Navigate Campus Life with Confidence, Buy and Sell with Ease.
+            </div>
+            <button
+              className='p-3 bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
+
+            >
+              <Link
+                to={'/search'}
+                className='text-xs sm:text-sm text-blue-800 font-bold hover:underline'
+              >
+                Let's get started...
+              </Link>
+            </button>
+          </div>
+          <div className="right-panel box">
+            {/* Add your image here */}
+            <img src='../src/images/home.jpg' alt='Description of the image' className='w-70 h-60'/>
+          </div>
+
+
         </div>
-        <Link
-          to={'/search'}
-          className='text-xs sm:text-sm text-blue-800 font-bold hover:underline'
-        >
-          Let's get started...
-        </Link>
+
       </div>
+
+
 
       {/* swiper */}
       <Swiper navigation>

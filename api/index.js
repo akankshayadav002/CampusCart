@@ -70,34 +70,34 @@ app.use((err, req, res, next) => {
 
 
 
-const server = app.listen(process.env.PORT, () =>
-  console.log(`Server started on ${process.env.PORT}`)
-);
+// const server = app.listen(process.env.PORT, () =>
+//   console.log(`Server started on ${process.env.PORT}`)
+// );
 
-const io = new SocketServer(server, {
-  cors: {
-    origin: "http://localhost:3000",
-    credentials: true,
-  },
-});
+// const io = new SocketServer(server, {
+//   cors: {
+//     origin: "http://localhost:3000",
+//     credentials: true,
+//   },
+// });
 
-const onlineUsers = new Map();
+// const onlineUsers = new Map();
 
-io.on("connection", (socket) => {
-  global.chatSocket = socket;
+// io.on("connection", (socket) => {
+//   global.chatSocket = socket;
 
-  socket.on("add-user", (userId) => {
-    onlineUsers.set(userId, socket.id);
-  });
+//   socket.on("add-user", (userId) => {
+//     onlineUsers.set(userId, socket.id);
+//   });
 
-  socket.on("send-msg", (data) => {
-    const sendUserSocket = onlineUsers.get(data.to);
+//   socket.on("send-msg", (data) => {
+//     const sendUserSocket = onlineUsers.get(data.to);
 
-    if (sendUserSocket) {
-      socket.to(sendUserSocket).emit("msg-recieve", data.msg);
-    }
-  });
-});
+//     if (sendUserSocket) {
+//       socket.to(sendUserSocket).emit("msg-recieve", data.msg);
+//     }
+//   });
+// });
 
 // const server = app.listen(process.env.PORT, () =>
 //   console.log(`Server started on ${process.env.PORT}`)

@@ -176,7 +176,7 @@ export default function Search() {
               />
               <span>Sale</span>
             </div>
-            <div className='flex gap-2'>
+            {/* <div className='flex gap-2'>
               <input
                 type='checkbox'
                 id='offer'
@@ -185,10 +185,10 @@ export default function Search() {
                 checked={sidebardata.offer}
               />
               <span>Offer</span>
-            </div>
+            </div> */}
           </div>
           <div className='flex gap-2 flex-wrap items-center'>
-            <label className='font-semibold'>Amenities:</label>
+            <label className='font-semibold'>Type:</label>
             <div className='flex gap-2'>
               <input
                 type='checkbox'
@@ -197,7 +197,7 @@ export default function Search() {
                 onChange={handleChange}
                 checked={sidebardata.parking}
               />
-              <span>Parking</span>
+              <span>New</span>
             </div>
             <div className='flex gap-2'>
               <input
@@ -207,7 +207,17 @@ export default function Search() {
                 onChange={handleChange}
                 checked={sidebardata.furnished}
               />
-              <span>Furnished</span>
+              <span>New Like</span>
+            </div>
+            <div className='flex gap-2'>
+              <input
+                type='checkbox'
+                id='parking'
+                className='w-5'
+                onChange={handleChange}
+                checked={sidebardata.parking}
+              />
+              <span>Used</span>
             </div>
           </div>
           <div className='flex items-center gap-2'>

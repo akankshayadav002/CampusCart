@@ -10,6 +10,8 @@ import CreateListing from './pages/CreateListing';
 import UpdateListing from './pages/UpdateListing';
 import Listing from './pages/Listing';
 import Search from './pages/Search';
+import searchLost from './pages/searchLost'
+import createLost from './pages/createLost'
 // import ContactUser from './pages/ContactUser';
 
 
@@ -24,11 +26,14 @@ export default function App() {
         <Route path='/about' element={<About />} />
         <Route path='/search' element={<Search />} />
         <Route path='/listing/:listingId' element={<Listing />} />
+        <Route path='/lost' element={<searchLost />} />
+
         {/* <Route path='/ContactUser' element={<ContactUser />} /> */}
 
         <Route element={<PrivateRoute />}>
           <Route path='/profile' element={<Profile />} />
           <Route path='/create-listing' element={<CreateListing />} />
+          <Route path='/create-lost' element={<createLost />} />
           <Route
             path='/update-listing/:listingId'
             element={<UpdateListing />}

@@ -23,7 +23,7 @@ export default function Contact({ listing }) {
   return (
     <>
       {landlord && (
-        <div className='flex flex-col gap-2'>
+        <div className='flex flex-col gap-2 '>
           <p>
             Contact <span className='font-semibold'>{landlord.username}</span>{' '}
             for{' '}
@@ -41,7 +41,7 @@ export default function Contact({ listing }) {
 
           <Link
           to={`mailto:${landlord.email}?subject=Regarding ${listing.name}&body=${message}`}
-          className='bg-slate-700 text-white text-center p-3 uppercase rounded-lg hover:opacity-95'
+          className='bg-slate-700 text-white text-center p-2 uppercase rounded-lg hover:opacity-95 w-50'
           >
             Send Message          
           </Link>

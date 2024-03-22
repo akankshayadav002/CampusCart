@@ -5,7 +5,7 @@ import {
   ref,
   uploadBytesResumable,
 } from 'firebase/storage';
-import { app } from '../firebase';
+import { app } from '../firebase.js';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -19,13 +19,11 @@ export default function CreateListing() {
     description: '',
     address: '',
     type: 'rent',
-    bedrooms: 1,
-    bathrooms: 1,
+    noOfItems: 1,
     regularPrice: 50,
-    discountPrice: 0,
-    offer: false,
-    parking: false,
-    furnished: false,
+    used: false,
+    newItem: false,
+    newLike: false,
   });
   const [imageUploadError, setImageUploadError] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -51,6 +49,7 @@ export default function CreateListing() {
           setUploading(false);
         })
         .catch((err) => {
+          console.log("error in photo uploading",err);
           setImageUploadError('Image upload failed (2 mb max per image)');
           setUploading(false);
         });
@@ -101,9 +100,9 @@ export default function CreateListing() {
     }
 
     if (
-      e.target.id === 'parking' ||
-      e.target.id === 'furnished' ||
-      e.target.id === 'offer'
+      e.target.id === 'used' ||
+      e.target.id === 'new like' ||
+      e.target.id === 'new'
     ) {
       setFormData({
         ...formData,
@@ -128,8 +127,6 @@ export default function CreateListing() {
     try {
       if (formData.imageUrls.length < 1)
         return setError('You must upload at least one image');
-      if (+formData.regularPrice < +formData.discountPrice)
-        return setError('Discount price must be lower than regular price');
       setLoading(true);
       setError(false);
       const res = await fetch('/api/listing/create', {
@@ -213,30 +210,30 @@ export default function CreateListing() {
             <div className='flex gap-2'>
               <input
                 type='checkbox'
-                id='parking'
+                id='new'
                 className='w-5'
                 onChange={handleChange}
-                checked={formData.parking}
+                checked={formData.newItem}
               />
               <span>New</span>
             </div>
             <div className='flex gap-2'>
               <input
                 type='checkbox'
-                id='furnished'
+                id='new like'
                 className='w-5'
                 onChange={handleChange}
-                checked={formData.furnished}
+                checked={formData.newLike}
               />
               <span>New Like</span>
             </div>
             <div className='flex gap-2'>
               <input
                 type='checkbox'
-                id='offer'
+                id='used'
                 className='w-5'
                 onChange={handleChange}
-                checked={formData.offer}
+                checked={formData.used}
               />
               <span>Used</span>
             </div>
@@ -245,13 +242,13 @@ export default function CreateListing() {
             <div className='flex items-center gap-2'>
               <input
                 type='number'
-                id='bedrooms'
+                id='noOfItems'
                 min='1'
                 max='10'
                 required
                 className='p-3 border border-gray-300 rounded-lg'
                 onChange={handleChange}
-                value={formData.bedrooms}
+                value={formData.noOfItems}
               />
               <p>No of items</p>
             </div>
@@ -282,11 +279,11 @@ export default function CreateListing() {
               <div className='flex flex-col items-center'>
                 <p>Regular price</p>
                 {formData.type === 'rent' && (
-                  <span className='text-xs'>(₹)</span>
+                  <span className='text-xs'>(₹ )</span>
                 )}
               </div>
             </div>
-            {formData.offer && (
+            {/* {formData.offer && (
               <div className='flex items-center gap-2'>
                 <input
                   type='number'
@@ -297,7 +294,7 @@ export default function CreateListing() {
                   className='p-3 border border-gray-300 rounded-lg'
                   onChange={handleChange}
                   value={formData.discountPrice}
-                />
+                /> */}
                 {/* <div className='flex flex-col items-center'>
                   <p>Discounted price</p>
 
@@ -305,8 +302,8 @@ export default function CreateListing() {
                     <span className='text-xs'>($ / month)</span>
                   )}
                 </div> */}
-              </div>
-            )}
+              {/* </div>
+            )} */}
           </div>
         </div>
         <div className='flex flex-col flex-1 gap-4'>

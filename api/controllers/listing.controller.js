@@ -68,22 +68,22 @@ export const getListings = async (req, res, next) => {
   try {
     const limit = parseInt(req.query.limit) || 9;
     const startIndex = parseInt(req.query.startIndex) || 0;
-    let offer = req.query.offer;
+    let used = req.query.used;
 
-    if (offer === undefined || offer === 'false') {
-      offer = { $in: [false, true] };
+    if (used === undefined || used === 'false') {
+      used = { $in: [false, true] };
     }
 
-    let furnished = req.query.furnished;
+    let newLike = req.query.newLike;
 
-    if (furnished === undefined || furnished === 'false') {
-      furnished = { $in: [false, true] };
+    if (newLike === undefined || newLike === 'false') {
+      newLike = { $in: [false, true] };
     }
 
-    let parking = req.query.parking;
+    let newItem = req.query.newItem;
 
-    if (parking === undefined || parking === 'false') {
-      parking = { $in: [false, true] };
+    if (newItem === undefined || newItem === 'false') {
+      newItem = { $in: [false, true] };
     }
 
     let type = req.query.type;
@@ -100,9 +100,9 @@ export const getListings = async (req, res, next) => {
 
     const listings = await Listing.find({
       name: { $regex: searchTerm, $options: 'i' },
-      offer,
-      furnished,
-      parking,
+      used,
+      newLike,
+      newItem,
       type,
     })
       .sort({ [sort]: order })

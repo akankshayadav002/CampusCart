@@ -5,25 +5,18 @@ import dotenv from 'dotenv';
 import userRouter from './routes/user.route.js';
 import authRouter from './routes/auth.route.js';
 import listingRouter from './routes/listing.route.js';
+import lostRouter from './routes/lost.route.js'
 import cookieParser from 'cookie-parser';
 import path from 'path';
 import { Server as SocketServer } from "socket.io";
 dotenv.config();
 import messageRoutes from "./routes/messages.js"
-const uri = "mongodb+srv://akanksha:Lappy%4089@cluster0.sbkle3g.mongodb.net/?retryWrites=true&w=majority";
-// mongoose
-//   .connect(process.env.MONGO)
-//   .then(() => {
-//     console.log('Connected to MongoDB!');
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
+
 
   const __dirname = path.resolve();
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 mongoose.connect(
-  uri,
+  process.env.MONGO,
   {
       useNewUrlParser: true,
       useUnifiedTopology: true
@@ -50,6 +43,7 @@ app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/listing', listingRouter);
 app.use("/api/messages", messageRoutes);
+app.use("/api/lost",lostRouter)
 
 
 app.use(express.static(path.join(__dirname, '/client/dist')));
@@ -69,62 +63,4 @@ app.use((err, req, res, next) => {
 });
 
 
-
-// const server = app.listen(process.env.PORT, () =>
-//   console.log(`Server started on ${process.env.PORT}`)
-// );
-
-// const io = new SocketServer(server, {
-//   cors: {
-//     origin: "http://localhost:3000",
-//     credentials: true,
-//   },
-// });
-
-// const onlineUsers = new Map();
-
-// io.on("connection", (socket) => {
-//   global.chatSocket = socket;
-
-//   socket.on("add-user", (userId) => {
-//     onlineUsers.set(userId, socket.id);
-//   });
-
-//   socket.on("send-msg", (data) => {
-//     const sendUserSocket = onlineUsers.get(data.to);
-
-//     if (sendUserSocket) {
-//       socket.to(sendUserSocket).emit("msg-recieve", data.msg);
-//     }
-//   });
-// });
-
-// const server = app.listen(process.env.PORT, () =>
-//   console.log(`Server started on ${process.env.PORT}`)
-// );
-
-// const io = socket(server, {
-//   cors: {
-//     origin: "http://localhost:3000",
-//     credentials: true,
-//   },
-// });
-
-// const onlineUsers = new Map();
-
-// io.on("connection", (socket) => {
-//   global.chatSocket = socket;
-
-//   socket.on("add-user", (userId) => {
-//     onlineUsers.set(userId, socket.id);
-//   });
-
-//   socket.on("send-msg", (data) => {
-//     const sendUserSocket = onlineUsers.get(data.to);
-
-//     if (sendUserSocket) {
-//       socket.to(sendUserSocket).emit("msg-recieve", data.msg);
-//     }
-//   });
-// });
 

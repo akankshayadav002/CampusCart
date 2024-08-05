@@ -74,10 +74,10 @@ export default function Home() {
           </button>
         </div>
       </div>
-      <div className="right-panel box" style={{ width: '40%' }}>
-        {/* Add your image here */}
+      {/* <div className="right-panel box" style={{ width: '40%' }}>
+        
         <img src='../src/images/home.jpg' alt='Description of the image' className='w-full h-full' />
-      </div>
+      </div> */}
     </div>
 
 
